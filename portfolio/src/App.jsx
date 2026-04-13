@@ -584,52 +584,42 @@ function App() {
         </div>
 
         <div className="about-content">
-          <motion.div 
-            className="about-text glass-card"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInLeft}
-            onHoverStart={() => setCursorVariant("hover")}
-            onHoverEnd={() => setCursorVariant("default")}
-          >
-            <p>
-              Hello! I'm <strong>Saksham Ital</strong>, an 18-year-old passionate full-stack developer 
-              and cybersecurity enthusiast based in Nagpur, Maharashtra. My journey into the world of 
-              technology began with a curiosity about how things work, which quickly evolved into a 
-              deep passion for building innovative solutions.
-            </p>
-            <p>
-              I recently completed a professional internship at <strong>DEVSYNC.PVT.LTD</strong>, where 
-              I gained hands-on experience in full-stack development, working on real-world projects 
-              and collaborating with experienced developers. This experience solidified my understanding 
-              of modern web technologies and best practices in software development.
-            </p>
-            <p>
-              My technical expertise spans across <strong>Python, JavaScript, C, and C++</strong>, with 
-              specialized knowledge in web development frameworks like React and Node.js. Additionally, 
-              I have a strong interest in <strong>cybersecurity and ethical hacking</strong>, constantly 
-              learning about security vulnerabilities, penetration testing, and secure coding practices.
-            </p>
-            <p>
-              I believe in continuous learning and staying updated with emerging technologies. When I'm 
-              not coding, you'll find me exploring new frameworks, contributing to open-source projects, 
-              or learning about the latest cybersecurity trends. My goal is to build secure, scalable, 
-              and user-friendly applications that make a positive impact.
-            </p>
-          </motion.div>
 
-          
-        </div>
+  {/* LEFT SIDE - TEXT */}
+  <motion.div 
+    className="about-text glass-card"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+    variants={fadeInLeft}
+  >
+    <p>
+Hello! I'm Saksham Ital, an 18-year-old passionate Full Stack Developer and Cybersecurity Enthusiast based in Nagpur, Maharashtra. My journey into technology began with a curiosity about how things work, which quickly evolved into a deep passion for building innovative and impactful solutions.
+</p>
 
-        <motion.div
-          className="about-info-grid"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-        >
-          {[
+<p style={{ marginTop: "15px" }}>
+I recently completed a professional internship at DEVSYNC.PVT.LTD, where I gained hands-on experience in full-stack development. During this time, I worked on real-world projects and collaborated with experienced developers, which strengthened my understanding of modern web technologies and industry best practices.
+</p>
+
+<p style={{ marginTop: "15px" }}>
+My technical expertise includes Python, JavaScript, C, and C++, along with modern frameworks like React and Node.js. I also have a strong interest in cybersecurity and ethical hacking, continuously learning about security vulnerabilities, penetration testing, and secure coding practices.
+</p>
+
+<p style={{ marginTop: "15px" }}>
+I believe in continuous learning and staying updated with emerging technologies. When I'm not coding, I enjoy exploring new frameworks, contributing to open-source projects, and keeping up with the latest trends in cybersecurity. My goal is to build secure, scalable, and user-friendly applications that create a meaningful impact.
+</p>
+    {/* your about text here */}
+  </motion.div>
+
+  {/* RIGHT SIDE - PERSONAL INFO */}
+  <motion.div
+    className="about-info"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+    variants={staggerContainer}
+  >
+   {[
             { icon: "👤", label: "Name", value: personalInfo.name },
             { icon: "🎂", label: "Age", value: `${personalInfo.age} Years` },
             { icon: "📍", label: "Location", value: personalInfo.location },
@@ -652,7 +642,15 @@ function App() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+  </motion.div>
+
+
+          
+        </div>
+
+      
+        
+        
 
         {/* ==================== ACHIEVEMENTS ==================== */}
 
