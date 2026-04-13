@@ -619,17 +619,7 @@ function App() {
             </p>
           </motion.div>
 
-          <motion.div 
-            className="about-photo glass-card"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInRight}
-            onHoverStart={() => setCursorVariant("hover")}
-            onHoverEnd={() => setCursorVariant("default")}
-          >
-            <img src={profilePhoto} alt="Saksham Ital - Profile Photo" />
-          </motion.div>
+          
         </div>
 
         <motion.div
