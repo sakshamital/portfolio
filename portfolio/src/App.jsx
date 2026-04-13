@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue, useInView }
 import { useEffect, useState, useRef } from "react"
 
 function App() {
+  const profilePhoto = `${import.meta.env.BASE_URL}profile.jpeg`
 
   /* ==================== STATE & REFS ==================== */
 
@@ -467,7 +468,18 @@ function App() {
       {/* ==================== HERO SECTION ==================== */}
 
       <section id="home" className="hero">
-        <div className="hero-content">
+  <div className="hero-content">
+
+    {/* 🔥 ADD YOUR IMAGE HERE */}
+    <motion.img
+      src={profilePhoto}
+      alt="Saksham Ital"
+      className="profile-image"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8 }}
+      whileHover={{ scale: 1.05 }}
+    />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -608,37 +620,49 @@ function App() {
           </motion.div>
 
           <motion.div 
-            className="about-info-grid"
+            className="about-photo glass-card"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            variants={staggerContainer}
+            variants={fadeInRight}
+            onHoverStart={() => setCursorVariant("hover")}
+            onHoverEnd={() => setCursorVariant("default")}
           >
-            {[
-              { icon: "👤", label: "Name", value: personalInfo.name },
-              { icon: "🎂", label: "Age", value: `${personalInfo.age} Years` },
-              { icon: "📍", label: "Location", value: personalInfo.location },
-              { icon: "📧", label: "Email", value: personalInfo.email },
-              { icon: "📱", label: "Mobile", value: personalInfo.mobile },
-              { icon: "💼", label: "Internship", value: "DEVSYNC.PVT.LTD" }
-            ].map((item, index) => (
-              <motion.div 
-                key={index}
-                className="info-card"
-                variants={fadeInRight}
-                whileHover={{ scale: 1.02, x: 10 }}
-                onHoverStart={() => setCursorVariant("hover")}
-                onHoverEnd={() => setCursorVariant("default")}
-              >
-                <div className="info-icon">{item.icon}</div>
-                <div className="info-content">
-                  <h4>{item.label}</h4>
-                  <p>{item.value}</p>
-                </div>
-              </motion.div>
-            ))}
+            <img src={profilePhoto} alt="Saksham Ital - Profile Photo" />
           </motion.div>
         </div>
+
+        <motion.div
+          className="about-info-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerContainer}
+        >
+          {[
+            { icon: "👤", label: "Name", value: personalInfo.name },
+            { icon: "🎂", label: "Age", value: `${personalInfo.age} Years` },
+            { icon: "📍", label: "Location", value: personalInfo.location },
+            { icon: "📧", label: "Email", value: personalInfo.email },
+            { icon: "📱", label: "Mobile", value: personalInfo.mobile },
+            { icon: "💼", label: "Internship", value: "DEVSYNC.PVT.LTD" }
+          ].map((item, index) => (
+            <motion.div 
+              key={index}
+              className="info-card"
+              variants={fadeInRight}
+              whileHover={{ scale: 1.02, x: 10 }}
+              onHoverStart={() => setCursorVariant("hover")}
+              onHoverEnd={() => setCursorVariant("default")}
+            >
+              <div className="info-icon">{item.icon}</div>
+              <div className="info-content">
+                <h4>{item.label}</h4>
+                <p>{item.value}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
         {/* ==================== ACHIEVEMENTS ==================== */}
 
@@ -1062,19 +1086,25 @@ function App() {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            {['💼', '🐙', '🔗', '🐦', '📸'].map((icon, index) => (
-              <motion.div
-                key={index}
-                className="social-link"
-                variants={scaleIn}
-                whileHover={{ scale: 1.1, rotate: 10, y: -10 }}
-                whileTap={{ scale: 0.9 }}
-                onHoverStart={() => setCursorVariant("hover")}
-                onHoverEnd={() => setCursorVariant("default")}
-              >
-                <span>{icon}</span>
-              </motion.div>
-            ))}
+            {[
+  { icon: "🐙", link: "https://github.com/sakshamital" },
+  { icon: "💼", link: "https://www.linkedin.com/in/saksham-ital-86452b317?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
+  { icon: "📱", link: "https://wa.me/919370638940" }
+].map((item, index) => (
+  <motion.a
+    key={index}
+    href={item.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="social-link"
+    whileHover={{ scale: 1.1, rotate: 10, y: -10 }}
+    whileTap={{ scale: 0.9 }}
+    onHoverStart={() => setCursorVariant("hover")}
+    onHoverEnd={() => setCursorVariant("default")}
+  >
+    <span>{item.icon}</span>
+  </motion.a>
+))}
           </motion.div>
 
           <motion.p
